@@ -9,6 +9,9 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://任跃兵.中国" # the base hostname & protocol for your site
 github_username:  cnryb
 
+
+encoding: UTF-8
+
 # Build settings
 markdown: kramdown
 highlighter: pygments
