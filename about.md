@@ -3,9 +3,6 @@ layout: page
 title: 关于我
 permalink: /关于我/
 ---
+任跃兵,男,中共产党党员,河南大学计算机科学与技术专业,现居住于北京-海淀区,3年工作经验
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
 
-You can find the source code for the Jekyll new theme at: [github.com/jglovier/jekyll-new](https://github.com/jglovier/jekyll-new)
-
-You can find the source code for Jekyll at [github.com/jekyll/jekyll](https://github.com/jekyll/jekyll)
