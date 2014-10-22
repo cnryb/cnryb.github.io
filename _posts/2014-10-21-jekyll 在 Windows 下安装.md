@@ -6,7 +6,6 @@ date:   2014/10/21 17:00:54
 categories: jekyll
 ---
 
-#jekyll 在 Windows 下安装
 
 ###1. 安装ruby
 
@@ -66,9 +65,3 @@ Markdown 语法说明 (简体中文版)<http://wowubuntu.com/markdown>
 Run Jekyll on Windows <http://jekyll-windows.juthilo.com/>
 
 在Octopress中为markdown的超链接加上target="_blank" <http://www.blogjava.net/lishunli/archive/2013/01/20/394478.html>
-
-
-\>>> from pygments.styles import STYLE_MAP  
-\>>> STYLE_MAP.keys()
-
-pygmentize -f html -S default > pygments.css
