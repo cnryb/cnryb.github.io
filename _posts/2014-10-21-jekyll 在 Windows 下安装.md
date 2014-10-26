@@ -53,6 +53,9 @@ https://ruby.taobao.org
 
 gem install jekyll -V
 
+# 安装 wdm
+gem install wdm -V
+
 {% endhighlight %}
 
 
