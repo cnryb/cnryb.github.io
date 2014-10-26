@@ -30,7 +30,7 @@ python得安装2.X版本的，安装3.X可能不行。
 
 ###4. 安装pip
 get-pip.py  
-https://pip.pypa.io/en/latest/installing.html  
+<https://pip.pypa.io/en/latest/installing.html>  
 {% highlight python %}
 python get-pip.py
 {% endhighlight %}
