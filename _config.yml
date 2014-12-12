@@ -2,7 +2,7 @@
 title: 任跃兵的技术博客
 email: cnryb@live.cn
 description: > # this means to ignore newlines until "baseurl:"
-  技术分享 jekyll C# Java JavaScript CSS
+  cnryb .net wpf jekyll C# Java JavaScript CSS
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://任跃兵.中国" # the base hostname & protocol for your site
 github_username:  cnryb
