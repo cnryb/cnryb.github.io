@@ -2,7 +2,7 @@
 layout: post
 title:  "Command failed with exit code 1解决方案"
 author:	任跃兵
-date:   2014/12/2 13:33:02  
+date:   2015/4/20 20:42:12   
 categories: cordova
 ---
 
