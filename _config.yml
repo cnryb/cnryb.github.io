@@ -14,3 +14,6 @@ encoding: UTF-8
 markdown: kramdown
 highlighter: pygments
 timezone: Asia/Shanghai
+
+
+permalink: /:categories/:title/

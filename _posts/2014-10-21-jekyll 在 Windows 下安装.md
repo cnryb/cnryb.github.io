@@ -2,7 +2,7 @@
 layout: post
 title:  "jekyll 在 Windows 下安装"
 author:	任跃兵
-date:   2014/10/21 17:00:54 
+date:   2015/4/21 10:23:23 
 categories: jekyll
 ---
 
@@ -28,7 +28,8 @@ python得安装2.X版本的，安装3.X可能不行。
 <https://www.python.org/download/>  
 选择 Add python.exe to Path
 
-###4. 安装pip
+###4*. 安装pip
+在命令行测试一下，如果已经安装过了的话就不需要本步骤了。Python2.7.9安装的时候已经自动的带上个了这个。  
 get-pip.py  
 <https://pip.pypa.io/en/latest/installing.html>  
 {% highlight python %}
@@ -43,6 +44,7 @@ python -m pip install Pygments
 ###6. 安装jekyll
 
 {% highlight ruby %}
+#把源修改成为淘宝的，原因想必你懂的。  
 > gem sources --remove https://rubygems.org/
 > gem sources -a https://ruby.taobao.org/
 > gem sources -l
