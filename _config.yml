@@ -12,7 +12,6 @@ encoding: UTF-8
 
 # Build settings
 markdown: kramdown
-highlighter: pygments
 timezone: Asia/Shanghai
 
 
