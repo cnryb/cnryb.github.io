@@ -30,4 +30,4 @@ categories: 资源
 安装完成之后需要这样配置<http://msdn.microsoft.com/en-us/library/dn757054.aspx>  
 Getting Started with Multi-Device Hybrid Apps Using HTML and JavaScript <http://msdn.microsoft.com/en-us/library/dn771545.aspx>  
 Android SDK代理设置 <http://mirrors.neusoft.edu.cn/configurations.we#android> mirrors.neusoft.edu.cn 80  
-nodejs 淘宝镜像 http://npm.taobao.org/ 配置命令 npm config set registry http://registry.npm.taobao.org/
+nodejs 淘宝镜像 http://npm.taobao.org/ 配置命令 npm config set registry https://registry.npm.taobao.org/
