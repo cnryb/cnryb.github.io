@@ -2,7 +2,7 @@
 layout: post
 title:  "Multi-Device Hybrid Apps Extension安装"
 author:	任跃兵
-date:   2015/4/20 20:43:55 
+date:   2015/10/23 16:57:42 
 categories: 资源
 ---
 
@@ -20,14 +20,15 @@ categories: 资源
 1. Apache Ant  <http://ant.apache.org/bindownload.cgi>  
 1. Oracle JDK <http://www.oracle.com/technetwork/java/javase/downloads>    
 1. Android SDK  <http://developer.android.com/sdk/index.html>  
-1. Google Chrome  
-1. Git Command Line  msysgit  
-1. SQLite for Windows  
-1. Apple iTunes  
-1. WebSocket4Net 
+1. Google Chrome  <http://www.google.cn/chrome/browser/>  
+1. Git Command Line  msysgit  <http://git-scm.com/download/>  
+1. SQLite for Windows  <http://www.sqlite.org/download.html>  
+1. Apple iTunes  <http://www.apple.com/cn/itunes/download/>  
+1. WebSocket4Net <http://websocket4net.codeplex.com/>  
  
 
 安装完成之后需要这样配置<http://msdn.microsoft.com/en-us/library/dn757054.aspx>  
 Getting Started with Multi-Device Hybrid Apps Using HTML and JavaScript <http://msdn.microsoft.com/en-us/library/dn771545.aspx>  
 Android SDK代理设置 <http://mirrors.neusoft.edu.cn/configurations.we#android> mirrors.neusoft.edu.cn 80  
-nodejs 淘宝镜像 http://npm.taobao.org/ 配置命令 npm config set registry https://registry.npm.taobao.org/
+
+npm 淘宝镜像 http://npm.taobao.org/ 配置命令 npm config set registry https://registry.npm.taobao.org/
