@@ -5,7 +5,7 @@ $(document).ready(function(){
 
 //外链新窗口打开
 function addBlankTargetForLinks () {
-  $('a[href^="http"]').each(function(){
+  $('a[href]').each(function(){
 		$(this).attr('target', '_blank');
 	});
 }
