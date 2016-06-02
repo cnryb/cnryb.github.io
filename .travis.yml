@@ -6,7 +6,7 @@ rvm:
 install: 
     - gem install jekyll
     - jekyll build
-    - ll
+    - ls
 
 
 env:
