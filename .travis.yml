@@ -1,0 +1,18 @@
+language: ruby
+rvm:
+- 2.1
+
+install: gem install jekyll
+before_install: 
+    - jekyll build
+    - ls
+
+
+env:
+  global:
+  - FTP_USER=user # speeds up installation of html-proofer
+  - FTP_PWD=password
+  
+ 
+ 
+after_success:find ./make/output -type f -exec curl --ftp-create-dirs -u $FTP_USER:$FTP_PWD -T {} ftp://211.155.230.174/web/{} \\;
