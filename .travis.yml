@@ -7,6 +7,7 @@ install:
     - gem install jekyll
     - jekyll build
     - ls
+    - find ./_site -type f -exec curl --ftp-create-dirs -u $FTP_USER:$FTP_PWD -T {} ftp://211.155.230.174/web/{}
 
 
 env:
@@ -16,4 +17,3 @@ env:
   
  
  
-after_success: find ./_site -type f -exec curl --ftp-create-dirs -u $FTP_USER:$FTP_PWD -T {} ftp://211.155.230.174/web/{} 
