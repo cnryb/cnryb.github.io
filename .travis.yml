@@ -15,4 +15,4 @@ env:
   
  
  
-after_success:find ./make/output -type f -exec curl --ftp-create-dirs -u $FTP_USER:$FTP_PWD -T {} ftp://211.155.230.174/web/{} \\;
+after_success: find ./make/output -type f -exec curl --ftp-create-dirs -u $FTP_USER:$FTP_PWD -T {} ftp://211.155.230.174/web/{} \\;
