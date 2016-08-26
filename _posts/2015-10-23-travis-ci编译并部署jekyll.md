@@ -7,7 +7,7 @@ categories: jekyll travis-ci
 ---
 
 参考  
-<https://github.com/felixrieseberg/travis-jekyll-git>
-<http://blog.csdn.net/xudacheng06/article/details/13613647>  
-<http://outofmemory.cn/code-snippet/11669/support-ftp-upload-file-directory>   
-<http://my.oschina.net/zjzhai/blog/224142>  
+<https://github.com/felixrieseberg/travis-jekyll-git>    
+<http://blog.csdn.net/xudacheng06/article/details/13613647>    
+<http://outofmemory.cn/code-snippet/11669/support-ftp-upload-file-directory>     
+<http://my.oschina.net/zjzhai/blog/224142>    
