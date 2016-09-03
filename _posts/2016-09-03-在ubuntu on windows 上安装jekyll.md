@@ -13,11 +13,13 @@ categories: jekyll
 [这里讲述怎么打开ubuntuOnWindows](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide)   
 在使用过程中，感觉这货就像是windows上的一个软件，非常方便。  
 假如说你把这货玩儿坏了，可以使用命令 
-> lxrun /uninstall /full  
+
+	lxrun /uninstall /full  
 
 进行卸载  
 然后使用命令  
-> lxrun /install 
+
+	lxrun /install 
 
 进行安装。  
 更多命令参见<https://msdn.microsoft.com/en-us/commandline/wsl/reference>
