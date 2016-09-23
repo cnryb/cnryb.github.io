@@ -18,7 +18,7 @@ categories: jekyll
 
 
 
-为什么热衷于折腾jekyll呢，因为他们网站下面有句话  [GitHub Pages](https://pages.github.com/) are powered by Jekyll  
+为什么热衷于折腾[jekyll](http://jekyllrb.com/)呢，因为他们网站下面有句话  [GitHub Pages](https://pages.github.com/) are powered by Jekyll  
 而本站就是放在[GitHub Pages](https://pages.github.com/)，戳开就是教程。 
 
 ### 环境
