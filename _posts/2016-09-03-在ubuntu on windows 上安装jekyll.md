@@ -2,9 +2,22 @@
 layout: post
 title:  "在ubuntu on windows 上安装jekyll"
 author:	任跃兵
-date:   2016/9/3 10:30:46         
+date:   2016/9/23 10:08:27         
 categories: jekyll
 ---
+# 已知问题 #
+安装ruby之后，重新启动ubuntu on windows，输入ruby命令，提示找不到。
+
+发现的解决办法 执行下面命令
+> source /home/xxxx/.rvm/scripts/rvm
+
+把xxxx换成自己的用户名
+
+
+----------
+
+
+
 为什么热衷于折腾jekyll呢，因为他们网站下面有句话  [GitHub Pages](https://pages.github.com/) are powered by Jekyll  
 而本站就是放在[GitHub Pages](https://pages.github.com/)，戳开就是教程。 
 
@@ -43,7 +56,15 @@ ruby安装完成之后，需要安装ruby-dev，执行命令 rvm install ruby-de
 #### 安装jekyll 
 <http://jekyllrb.com/>  
 直接照着上面的安装就好了，新版本的貌似要安装bundler，不知道干啥用的。
-只使用命令 jekyll server --force 看起来一样正常 
+只使用命令 jekyll server --force 看起来一样正常 。
+这里最好把gem的源设置成国内的，不然可能会碰到伟大的长城。
+我用的是这个 http://mirrors.aliyun.com/rubygems/   
+下面是具体设置步骤
+
+> gem sources --remove https://rubygems.org/  
+> <del>gem sources -a https://ruby.taobao.org/ 据说淘宝的已经停止维护了，ssl证书貌似除了问题</del>  
+> gem sources --add http://mirrors.aliyun.com/rubygems/  
+> gem sources -l
 
 ### 异常处理
 
