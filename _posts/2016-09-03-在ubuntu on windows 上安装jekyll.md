@@ -8,10 +8,8 @@ categories: jekyll
 # 已知问题 #
 安装ruby之后，重新启动ubuntu on windows，输入ruby命令，提示找不到。
 
-发现的解决办法 执行下面命令
-> source /home/xxxx/.rvm/scripts/rvm
+发现的解决办法 执行命令 ```source /home/xxxx/.rvm/scripts/rvm```把xxxx换成自己的用户名
 
-把xxxx换成自己的用户名
 
 
 ----------
@@ -25,16 +23,12 @@ categories: jekyll
 使用Ubuntu On Windwos,[戳这里了解详细信息](https://github.com/Microsoft/BashOnWindows)   
 [这里讲述怎么打开ubuntuOnWindows](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide)   
 在使用过程中，感觉这货就像是windows上的一个软件，非常方便。  
-假如说你把这货玩儿坏了，可以使用命令 
+假如说你把这货玩儿坏了，可以使用命令 ```lxrun /uninstall /full  ```进行卸载  
 
-	lxrun /uninstall /full  
 
-进行卸载  
-然后使用命令  
+然后使用命令  ```lxrun /install ```进行安装。  
 
-	lxrun /install 
 
-进行安装。  
 更多命令参见<https://msdn.microsoft.com/en-us/commandline/wsl/reference>
 
 ### 安装方法
@@ -49,7 +43,7 @@ categories: jekyll
 
 尝试了两种解决方案  
 1. 使用  <https://launchpad.net/~brightbox/+archive/ubuntu/ruby-ng>这里给出的方案，能够安装，但在使用gem安装的程序过程中，出现找不到命令的问题，应该时哪个地方配置除了问题了，对linux了解不多，没有多费心寻找解决方案。不过看样子应该时可行方案之一。  
-1. 使用[rvm](https://rvm.io/rvm/install)安装，[Ruby enVironment (Version) Manager (RVM)](https://rvm.io/rvm/about)07年出现的东西，用起来很省心，中间需要两次输入密码进行授权。[戳这里有安装教程](https://rvm.io/rvm/install) 我用的这个。
+2. 使用[rvm](https://rvm.io/rvm/install)安装，[Ruby enVironment (Version) Manager (RVM)](https://rvm.io/rvm/about)07年出现的东西，用起来很省心，中间需要两次输入密码进行授权。[戳这里有安装教程](https://rvm.io/rvm/install) 我用的这个。
 
 ruby安装完成之后，需要安装ruby-dev，执行命令 rvm install ruby-dev就能安装好了
 
@@ -128,7 +122,6 @@ bundle install时如果碰到以下错误
 
 尝试使用 find ~/.bundle/cache -type d -exec chmod 0755 {} +，参考 <https://github.com/bundler/bundler/issues/4599>
 
-
 ----------
 
 jekyll server时如果你遇到如下错误 
@@ -140,6 +133,6 @@ jekyll server时如果你遇到如下错误
 
 ###  参考  
 1. <https://github.com/Microsoft/BashOnWindows>    
-1. <https://rvm.io/rvm/install>       
-1. <https://msdn.microsoft.com/en-us/commandline/wsl/install_guide>  
-1. <https://msdn.microsoft.com/en-us/commandline/wsl/reference>  
+2. <https://rvm.io/rvm/install>       
+3. <https://msdn.microsoft.com/en-us/commandline/wsl/install_guide>  
+4. <https://msdn.microsoft.com/en-us/commandline/wsl/reference>  
