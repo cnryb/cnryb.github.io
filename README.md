@@ -10,7 +10,7 @@
 
 docker 测试方法
 
-`docker build -t cnryb .`  
+`docker build -t cnryb .`    
 `docker run --rm -p 4000:4000 cnryb`
 
 `--rm`：容器退出后随之将其删除。
