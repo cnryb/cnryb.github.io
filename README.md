@@ -10,11 +10,11 @@
 
 docker 测试方法
 
-`docker build -t cnryb .`
+`docker build -t cnryb .`    
 `docker run --rm -p 4000:4000 cnryb`
 
 `--rm`：容器退出后随之将其删除。
 
--p 本地端口和容器端口映射
+-p 本地端口：容器端口映射
 
 http://127.0.0.1:4000/ 就可以访问了
