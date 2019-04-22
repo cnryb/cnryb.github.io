@@ -18,3 +18,7 @@ docker 测试方法
 -p 本地端口：容器端口映射
 
 http://127.0.0.1:4000/ 就可以访问了
+
+
+使用docker 镜像预览
+docker run --rm -it -p 4000:4000 -v D:/code/cnryb.github.io:/srv/jekyll jekyll/jekyll  jekyll server
