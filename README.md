@@ -20,5 +20,18 @@ docker 测试方法
 http://127.0.0.1:4000/ 就可以访问了
 
 
-使用docker 镜像预览
-docker run --rm -it -p 4000:4000 -v D:/code/cnryb.github.io:/srv/jekyll jekyll/jekyll  jekyll server
+
+## 使用 docker 替代本地 jekyll
+windows
+```
+docker run --rm -it -p 4000:4000 -v D:/code/cnryb.github.io:/srv/jekyll jekyll/jekyll  jekyll server --drafts
+```
+
+macOS
+```
+docker run --rm -it \
+  --volume="$PWD:/srv/jekyll" \
+  --publish 4000:4000 \
+  jekyll/jekyll \
+  jekyll serve --drafts
+```
