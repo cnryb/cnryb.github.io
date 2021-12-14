@@ -30,8 +30,19 @@ npm install 的大致执行过程：
 [yarn](https://yarnpkg.com/) 只是 npm cli 的一个替代工具。它仍然使用 npm 的 registry 。主要是为了解决 npm 的一些问题，如 npm install 执行耗时长、没有离线模式、在不同时间执行得到不同的结果等等。  
 我们来看一下 [yarn v1](https://classic.yarnpkg.com/lang/en/) 提供的特性。超快，有了全局缓存、使用并行操作、支持离线模式；安全，安装时校验完整性；可靠，创造了 yan.lock 文件，解决不同时间执行得到不同的结果的问题。需要特别说的是，当前的 npm (v8) 版本已经支持了 yarn.lock 文件。
 
-[yarn berry](https://yarnpkg.com/) 有了巨大的改变。在开始之前我们先来了解一下[corepack](https://github.com/nodejs/corepack) Node.16.9.0
-https://github.com/nodejs/corepack/blob/49ea6a2/DESIGN.md#envisioned-workflow 计划把 npm 从 nodejs 安装包中移除。
+[yarn berry](https://yarnpkg.com/)，也就是下一代的 yarn ， 有了巨大的改变。
+
+在开始之前我们先来了解一下 [corepack](https://github.com/nodejs/corepack)。corepack 是 Node.js 项目和项目在开发过程中使用的包管理器之间的桥梁。更简单点理解，它是管理包管理工具的。
+
+corepack 的核心开发者和 yarn 是同一批人。他们有很大一个意图是要把 npm cli 从 node.js 的一等公民地位上拉下来，让所有的包管理器地位平等。从 Node.16.9.0 开始，corepack 已经集成到 node.js 的安装文件中了。他们还计划把 npm 从 nodejs 安装包中移除。详情参见这里 [corepack DESIGN](https://github.com/nodejs/corepack/blob/49ea6a2/DESIGN.md#envisioned-workflow)。
+
+那么 corepack 如何使用呢？从 [node.js 的文档](https://nodejs.org/dist/latest-v16.x/docs/api/corepack.html) 中可以看到，目前的 corepack 还是实验性的功能，只支持 yarn 和 pnpm 。先执行 `corepack enable` 命令，启用 corepack 。然后在 package.json 中添加 `"packageManager": "yarn@3.1.1",`  这样就可以在项目根目录执行 yarn 了（当然，在此之前，需要卸载掉全局的 yarn ）。这时候执行的 yarn 命令就是通过 corepack 代理的。而且因为在 package.json 中指明了 packageManager，所以使用其它的包管理工具时，会直接报错（请注意，当前的 corepack 仅支持 yarn 和 pnpm ）。
+
+记下来在把目光拉回 yarn 。你会发现上面在 packageManager 中指定的版本是 3.1.1 ，但是 npm registry 中最高版本是 2.4.3 。通过查看 [corepack 的代码](https://github.com/nodejs/corepack/blob/3b2961aaa8a8f823fcc63eada88379ca00638d7c/config.json#L80)，发现是从 https://repo.yarnpkg.com 中取的 yarn ，不知道 yarn 是不是也要对 npm registry 下手了。
+
+我们来创建个新的项目来试一试 yarn 。就以 vite 创建的 Vue 项目为例。使用 `npm init vite@latest` 初始化一个 vite 项目之后，在 package.json 中添加 `"packageManager": "yarn@3.1.1",` 。执行 yarn 命令，安装项目的依赖。这时候，你会发现没有出现 node_modules 目录！但是执行 `yarn build` 和 `yarn dev` 依然能够正常运行。
+
+仔细观察发现，除了多出 yarn.lock 文件之外，还多了 `pnp.cjs` 、 `pnp.loader.mjs` 以及 `.yarn` 目录。其中 `pnp.cjs` 和 `pnp.loader.mjs` 
 
 # pnpm
 [pnpm](https://pnpm.io/) 的出现时间比 yarn 稍晚 (yarn 在 npmjs 中的创建时间是 2012-03-21，pnpm 是 2013-03-08)。
@@ -42,7 +53,7 @@ https://github.com/nodejs/corepack/blob/49ea6a2/DESIGN.md#envisioned-workflow �
 - [npm cli](https://github.com/npm/cli/)
 - [npm documentation source](https://github.com/npm/documentation)
 - [SemVer](https://semver.org/lang/zh-CN/)
-- [Node.js发展史](http://www.ayqy.net/blog/node-js发展史/)
+- [Node.js 发展史](http://www.ayqy.net/blog/node-js发展史/)
 - [npm 模块安装机制简介](https://www.ruanyifeng.com/blog/2016/01/npm-install.html)
 - [yarn v1](https://classic.yarnpkg.com/lang/en/)
 - [yarn berry](https://yarnpkg.com/)
