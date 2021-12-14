@@ -42,11 +42,18 @@ corepack 的核心开发者和 yarn 是同一批人。他们有很大一个意�
 
 我们来创建个新的项目来试一试 yarn 。就以 vite 创建的 Vue 项目为例。使用 `npm init vite@latest` 初始化一个 vite 项目之后，在 package.json 中添加 `"packageManager": "yarn@3.1.1",` 。执行 yarn 命令，安装项目的依赖。这时候，你会发现没有出现 node_modules 目录！但是执行 `yarn build` 和 `yarn dev` 依然能够正常运行。
 
-仔细观察发现，除了多出 yarn.lock 文件之外，还多了 `pnp.cjs` 、 `pnp.loader.mjs` 以及 `.yarn` 目录。其中 `pnp.cjs` 和 `pnp.loader.mjs` 
+仔细观察发现，除了多出 yarn.lock 文件之外，还多了 `.pnp.cjs` 、 `.pnp.loader.mjs` 以及 `.yarn` 目录。其中 `.pnp.cjs` 和 `.pnp.loader.mjs` 分别给 CommonJS 模块和 ES6 模块使用。里面保存的是项目依赖的包在磁盘上的位置。使用的是 Plug'n'Play 技术，这个是在 2018 年 9 提出的。`.yarn` 目录中保存的是依赖包的 zip 文件。当项目使用依赖包时会通过 `.pnp.cjs` 或者 `.pnp.loader.mjs` 找到 `.yarn` 目录中压缩包中的位置。并不会解压 zip 文件。
+
+这样可以实现 [Zero-Installs](https://yarnpkg.com/features/zero-installs) ，把 `.pnp.cjs` 、 `.pnp.loader.mjs` 以及 `.yarn` 目录提交到代码库，其他同学拉下代码之后，可以直接运行。而且一定和开发环境相同。
+
+目前看起来不太好的地方，就是只能通过 yarn 命令来执行其他命令，不然会找不到依赖的包。那怕是 `node ./index.js` ，也要改成 `yarn node ./index.js` 才能正常执行。
 
 # pnpm
-[pnpm](https://pnpm.io/) 的出现时间比 yarn 稍晚 (yarn 在 npmjs 中的创建时间是 2012-03-21，pnpm 是 2013-03-08)。
+[pnpm](https://pnpm.io/) 的出现时间比 yarn 稍晚 (yarn 在 npmjs 中的创建时间是 2012-03-21，pnpm 是 2013-03-08)。它的目标也是替代 npm cli 。
 
+它继承了 yarn v1 的各种优势，而且还创造出了新的依赖包安装方式。npm 和 yarn v1 都是把依赖包解压后拷贝到 node_mudules 目录下。yarn 从 npm 上的改进是，它优先使用缓存，同时处理多个依赖包。pnpm 创新性的改进时，使用链接的方式把依赖包从全局缓存链接到 node_modules 目录下，这种方式明显会比拷贝效率更高。而且是电脑上 node 项目越多效果约明显，会明显节约磁盘空间、加快安装依赖的速度。
+
+它的劣势也来自它的优势。首先它链接的方式，在 Windows 系统下和其它系统下用的是不一样的方式，可能会出现不一致的问题。然后就是它是从全局缓存中链接过去的，一旦某次调试中，不小心修改了依赖包，那么电脑上所有的项目都会收到影响，而且极难排查问题。
 
 # 参考链接
 - [npm](https://www.npmjs.com/)
