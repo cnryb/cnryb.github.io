@@ -32,9 +32,9 @@ npm install 的大致执行过程：
 
 [yarn berry](https://yarnpkg.com/)，也就是下一代的 yarn ， 有了巨大的改变。
 
-在开始之前我们先来了解一下 [corepack](https://github.com/nodejs/corepack)。corepack 是 Node.js 项目和项目在开发过程中使用的包管理器之间的桥梁。更简单点理解，它是管理包管理工具的。
+在开始之前我们先来了解一下 [corepack](https://github.com/nodejs/corepack)。corepack 是 Node.js 项目和项目在开发过程中使用的包管理器之间的桥梁。更简单点理解，它是管理包管理器工具的。
 
-corepack 的核心开发者和 yarn 是同一批人。他们有很大一个意图是要把 npm cli 从 node.js 的一等公民地位上拉下来，让所有的包管理器地位平等。从 Node.16.9.0 开始，corepack 已经集成到 node.js 的安装文件中了。他们还计划把 npm 从 nodejs 安装包中移除。详情参见这里 [corepack DESIGN](https://github.com/nodejs/corepack/blob/49ea6a2/DESIGN.md#envisioned-workflow)。
+corepack 的核心开发者和 yarn 的核心开发者是同一批人。他们有很大一个意图是要把 npm cli 从 node.js 的一等公民地位上拉下来，让所有的包管理器地位平等。从 Node.16.9.0 开始，corepack 已经集成到 node.js 的安装文件中了。他们还计划把 npm 从 nodejs 安装包中移除。详情参见这里 [corepack DESIGN](https://github.com/nodejs/corepack/blob/49ea6a2/DESIGN.md#envisioned-workflow)。
 
 那么 corepack 如何使用呢？从 [node.js 的文档](https://nodejs.org/dist/latest-v16.x/docs/api/corepack.html) 中可以看到，目前的 corepack 还是实验性的功能，只支持 yarn 和 pnpm 。先执行 `corepack enable` 命令，启用 corepack 。然后在 package.json 中添加 `"packageManager": "yarn@3.1.1",`  这样就可以在项目根目录执行 yarn 了（当然，在此之前，需要卸载掉全局的 yarn ）。这时候执行的 yarn 命令就是通过 corepack 代理的。而且因为在 package.json 中指明了 packageManager，所以使用其它的包管理工具时，会直接报错（请注意，当前的 corepack 仅支持 yarn 和 pnpm ）。
 
@@ -44,14 +44,14 @@ corepack 的核心开发者和 yarn 是同一批人。他们有很大一个意�
 
 仔细观察发现，除了多出 yarn.lock 文件之外，还多了 `.pnp.cjs` 、 `.pnp.loader.mjs` 以及 `.yarn` 目录。其中 `.pnp.cjs` 和 `.pnp.loader.mjs` 分别给 CommonJS 模块和 ES6 模块使用。里面保存的是项目依赖的包在磁盘上的位置。这里使用的是 yarn 在 2018 年 9 提出的 Plug'n'Play 。`.yarn` 目录中保存的是依赖包的 zip 文件。当项目使用依赖包时会通过 `.pnp.cjs` 或者 `.pnp.loader.mjs` 找到 `.yarn` 目录中压缩包中的位置。并不会解压 zip 文件。
 
-这样可以实现 [Zero-Installs](https://yarnpkg.com/features/zero-installs) ，把 `.pnp.cjs` 、 `.pnp.loader.mjs` 以及 `.yarn` 目录提交到代码库，其他同学拉下代码之后，可以直接运行。而且一定和开发环境相同。
+这样可以实现 [Zero-Installs](https://yarnpkg.com/features/zero-installs) ，把 `.pnp.cjs` 、 `.pnp.loader.mjs` 以及 `.yarn` 目录提交到代码库，其他同学拉下代码之后，可以直接运行，无需执行安装依赖的过程。还可以确保服务器环境一定和开发环境相同。
 
 目前看起来不太好的地方，就是只能通过 yarn 命令来执行其他命令，不然会找不到依赖的包。那怕是 `node ./index.js` ，也要改成 `yarn node ./index.js` 才能正常执行。
 
 # pnpm
 [pnpm](https://pnpm.io/) 的出现时间比 yarn 稍晚 (yarn 在 npmjs 中的创建时间是 2012-03-21，pnpm 是 2013-03-08)。它的目标也是替代 npm cli 。
 
-它继承了 yarn v1 的各种优势，而且还创造出了新的依赖包安装方式。npm 和 yarn v1 都是把依赖包解压后拷贝到 node_mudules 目录下。yarn 从 npm 上的改进是，它优先使用缓存，同时处理多个依赖包。pnpm 创新性的改进时，使用链接的方式把依赖包从全局缓存链接到 node_modules 目录下，这种方式明显会比拷贝效率更高。而且是电脑上 node 项目越多效果约明显，会明显节约磁盘空间、加快安装依赖的速度。
+它继承了 yarn v1 的各种优势，而且还创新了依赖包安装的方式。npm 和 yarn v1 都是把依赖包解压后拷贝到 node_mudules 目录下。yarn 从 npm 上的改进是，它优先使用缓存，同时处理多个依赖包。pnpm 创新性的改进是，使用链接的方式把依赖包从全局缓存链接到 node_modules 目录下，这种方式明显会比拷贝效率更高。而且是电脑上 node 项目越多效果约明显，会明显节约磁盘空间、加快安装依赖的速度。
 
 它的劣势也来自它的优势。首先它链接的方式，在 Windows 系统下和其它系统下用的是不一样的方式，可能会出现不一致的问题。然后就是它是从全局缓存中链接过去的，一旦某次调试中，不小心修改了依赖包，那么电脑上所有的项目都会收到影响，而且极难排查问题。
 
