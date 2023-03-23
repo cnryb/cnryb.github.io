@@ -30,8 +30,8 @@ docker run --rm -it -p 4000:4000 -v D:/code/cnryb.github.io:/srv/jekyll jekyll/j
 macOS
 ```
 docker run --rm -it \
-  --volume="$PWD:/srv/jekyll" \
-  --publish 4000:4000 \
-  jekyll/jekyll \
-  jekyll serve --drafts
+  --volume="$PWD:/app" \
+  -p 4000:4000 \
+  cnryb \
+  jekyll server --host 0.0.0.0 --drafts
 ```
