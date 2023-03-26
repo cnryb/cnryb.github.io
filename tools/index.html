@@ -1,1 +1,29 @@
-hello world!
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Tools</title>
+  <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+  <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <h1>Tools</h1>
+  <div id="app">
+  </div>
+</body>
+
+<script type="module">
+import { createApp } from 'vue'
+import App from './App.js'
+
+createApp(App).mount('#app')
+</script>
+
+</html>
